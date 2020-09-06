@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Nutrition API</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="style-one.css"/>
+		<link rel="icon" type="image/jpg" size="20x20" href="http://www.magnamags.com/upload/articles/shutterstock_133282520121814.jpg"/>
+		<link rel="stylesheet" type="text/css" media="only screen and (max-width: 992px)" href="mobile-style.css">
+		<style>
+			
+			#wikipedia-links {
+	margin: 0px;
+	padding: 5px;
+}
+
+#wikipedia-links li {
+	background-color: #bfbfbf;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 95%;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    text-align: center;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+#wikipedia-links li:hover {
+	opacity: 0.7;
+	transition: 0.3s;
+}
+		</style>
+		<script src="jQuery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
+	</head>
+	
+	<body ng-app="myApp" ng-controller="masterCtrl" class="blacky">
+	
+		<div class="container-fluid">
+		
+			<a href="#"><img title="Click To See Your Selected Items" id="cart" src="http://www.iconsdb.com/icons/download/black/shopping-cart-512.png"/></a>
+		
+			<div class="row whitey" style="border-bottom: 1px solid black;">
+				<div class="col-md-12">
+					<h1 class="text-center header-text f-bold" onclick="sayHello()">Nutritional Information about Food</h1>
+				</div>
+			</div><br>
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<div class="border whitey">
+						<h2 class="text-center f-bold">Search Food Item</h2>
+						<p class="f-bold text-center" id="msg-text2"></p>
+						<form id="search-form"><center>
+							<input type="text" placeholder="Name of Food" class="search-input" id="searchField" value=""><br>
+							<button id="searchBtn" type="button" onclick="status()" ng-click="loadFoods()">Submit</button>
+							<button id="info" type="button" onclick="Info()">Help</button>
+							<p id="info-text"></p>
+							<p class="text-center"><b>Results For:</b> {{message}}</p>
+						</form><br>
+					</div><br>
+					<div class="whitey wikipedia-container border" style="margin-bottom: 20px;">
+						<h3 class="text-center f-bold" id="wikipedia-header">Relevant Wikipedia Links</h3>
+						<p class="text-center">Find relevant Wikipedia articles based on Food Item</p>
+						<center><a class="middlr text-center;" href="#"><img id="dropdown-icon" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png"/></a></center>
+						<ul class="text-center" id="wikipedia-links"></ul>
+					</div>
+					
+					<div id="selected-foods" class="whitey border">
+						<h2 class="text-center f-bold">Selected Food Items</h2>
+						<p class="text-center"><b>Total Calories:</b> <span id="total-cal">{{totalCalories}}</span></p>
+						<!--<input id="ipt-1" class="middlr" type="text" ng-model="filter.s" placeholder="Filter Selected By Name"/>-->
+						<ul class="selected-foods">
+							<li data-ng-repeat="food in selectedFoods track by $index " class="food-items" ng-click="addClicked()">
+								<b><p>{{food.foodName}}</p></b>
+								<p> <span>{{food.foodBrand}}</span>, <span>{{food.foodCalories}}</span> Calories.</p>
+								<button type="button" id="remove-btn" ng-click="removeFood(food)">Remove Item</button>
+							</li> 
+						</ul>
+						<br>
+					</div>
+					<br>
+				</div>
+				
+				<div class="col-md-8">
+					<div style="padding-bottom: 15px;" id="food-div" class="whitey">
+						<h2 class="text-center food-text f-bold">Item List</h2>
+						<input id="ipt-1" class="middlr" type="text" ng-model="filter.r" placeholder="Filter Results By Name"/>
+						<ul id="food-list" >
+							<li data-ng-repeat="food in foods | filter : {foodName:filter.r}" class="food-items">
+								<b><p>{{food.foodName}}</p></b>
+								<p> <span>{{food.foodBrand}}</span>, <span>{{food.foodCalories}}</span> Calories.</p>
+								<button type="button" id="add-btn" ng-click="addFood(food)">Add Item</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+			
+			<br>
+		
+		</div>
+		
+		<script>
+		
+			$(document).ready(function(){
+			
+				var dropIcon = $('#dropdown-icon');
+				var cartIcon = $('#cart');
+				
+				var wikiList = $('#wikipedia-links');
+				var selectedList = $('#selected-foods');
+				
+				var wHidden = true;
+				var sHidden = true;
+				
+				dropIcon.click(function(){
+				
+					if(wHidden == true) {
+						wikiList.show('fast');
+						dropIcon.toggleClass('rotate');
+						wHidden = false;
+					}
+					else {
+						wikiList.hide('fast');
+						dropIcon.toggleClass('rotate');
+						wHidden = true;
+					}
+				
+				});
+				
+				cartIcon.click(function(){
+					
+					if(sHidden == true) {
+						selectedList.show('fast');
+						dropIcon.toggleClass('rotate');
+						sHidden = false;
+					}
+					else {
+						selectedList.hide('fast');
+						dropIcon.toggleClass('rotate');
+						sHidden = true;
+					}
+					
+				});
+			
+			});
+			
+			function status() {
+				console.log("Function Started");
+			}
+			
+			var App = angular.module("myApp", ["firebase"]);
+
+			App.factory("foodList", ["$firebaseArray",
+  				function($firebaseArray) {
+
+   					var ref = new Firebase("https://nutrition-trackr.firebaseio.com/");
+
+   					// this uses AngularFire to create the synchronized array
+    				return $firebaseArray(ref);
+ 				}
+			]);
+			
+			App.controller("masterCtrl", ["$scope", "foodList",
+			function($scope, foodList) {
+
+				setTimeout(function(){
+					$scope.calCount();
+				},2500);
+				
+				$scope.selectedFoods = foodList;
+				
+				$scope.totalCalories = 0;
+				
+				$scope.message = '';
+				
+				$scope.loadFoods = function() {
+				
+					var foodSearch = $('#searchField').val();
+					
+					if(foodSearch == '') {
+						$('#msg-text2').text('Please Input a Search Query.');
+						setTimeout(function() {
+							$('#msg-text2').text('');
+						},3000);
+						return;
+					}
+					
+					$scope.foods = [];
+					
+					console.log("Search Bottun Clicked");
+					$scope.message = foodSearch;
+		
+					var APIurl = 'https://api.nutritionix.com/v1_1/search/' + foodSearch + '?results=0:50&fields=item_name,brand_name,item_id,nf_calories&appId=138d97a2&appKey=16dcfdb8ad18dd1af6382f5d2d0ea49d'
+		
+					$.getJSON(APIurl, function(data) {
+
+						console.log(data);
+			
+						var results = data.hits;
+				
+						for(var i = 0; i < results.length; i++) {
+							var result = data.hits[i];
+				
+							var resultName = result.fields.item_name;
+							var resultBrand = result.fields.brand_name;
+							var resultCalories = result.fields.nf_calories;
+							
+							var id = Math.random();
+				
+							$scope.foods.push({
+								foodName : resultName,
+								foodBrand : resultBrand,
+								foodCalories : parseInt(resultCalories),
+								id: id,
+							});
+				
+						};
+						
+						console.log("Done Push");
+						
+						$scope.$apply(function () {
+							console.log($scope.foods);
+						});
+					})
+
+					var wikiURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='
+					+ foodSearch + '&format=json&callback=wikiCallback';
+	
+					var wikiTimeout = setTimeout(function(){
+						$('#wikipedia-header').text("Failed To Load Wikipedia Resources");
+					}, 8000);
+		
+					$("#wikipedia-links").text("");
+	
+					$.ajax({
+						url : wikiURL,
+						dataType : "jsonp",
+						// callback,
+						success : function(response) {
+							var articleList = response[1];
+						
+							for (var i = 0; i < articleList.length; i++) {
+								articleInfo = articleList[i];
+								var URL = 'http://en.wikipedia.org/wiki/' + articleInfo;
+								$('#wikipedia-links').append(
+								'<li><a href="' + URL + '">' + articleInfo + '</a></li>'
+								);
+							};
+							clearTimeout(wikiTimeout);
+						}
+		
+					});
+					
+					$('#dropdown-icon').show('fast');
+					
+					var foodSearch = $('#searchField').val('');
+					
+				}
+				
+				$scope.calCount = function() {
+
+					console.log($scope.selectedFoods);
+
+					if($scope.selectedFoods.length == 0) {
+						return;
+					}
+					
+					$.each($scope.selectedFoods, function(index, food){
+						$scope.totalCalories = $scope.totalCalories + food.foodCalories;	
+					});
+
+					$scope.$apply(function () {
+						console.log($scope.totalCalories);
+					});
+				}
+
+				$scope.addFood = function(food) {
+					console.log(food);
+					$scope.selectedFoods.$add(food);
+
+					$scope.totalCalories = $scope.totalCalories + food.foodCalories;
+					//$scope.calCount();
+				}
+				
+				$scope.removeFood = function(food) {
+					console.log(food);
+					var index = $scope.selectedFoods.indexOf(food);
+					$scope.selectedFoods.$remove(index);	
+					$scope.totalCalories = $scope.totalCalories - food.foodCalories;
+					//$scope.calCount();
+				}
+				
+				$scope.webInfo = function() {
+					alert(
+						'Hello, and welcome! You are currently at the Food Nutrition page! Search anything edible and find the brand and calories for your search. Enjoy!'
+					);	
+				}
+
+			 }
+
+			]);
+			
+			function Info() {
+				$('#info-text').text('Search for any edible food item');
+	
+				setTimeout(function(){ 
+					$('#info-text').text('');
+				}, 3000);
+	
+			}
+		
+		</script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,241 @@
+body {
+	width: 100%;
+	margin: auto;
+}
+
+input {
+	margin-bottom: 5px;
+	border: 1px solid blue;
+	padding: 3px;
+}
+
+#dropdown-icon {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: auto;
+	display: none;
+}
+#dropdown-icon:hover {
+	background-color: grey;
+}
+
+.f-bold {
+	font-weight: bold;
+}
+
+.info-img {
+
+}
+
+.text-center {
+	text-align: center;
+}
+
+.header-text {
+	margin: 0px;
+	padding: 15px;
+	-webkit-transition: transition: 0.4s;
+	transition: 0.4s;
+}
+
+.header-text:hover {
+	opacity: 0.3;
+	transition: 0.4s;
+}
+
+.nav-bar {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	
+}
+
+.whitey {
+	background-color: white;
+}
+
+.blacky {
+	background-color: blue;
+}
+
+.nav-bar li {
+	display: inline-block;
+	padding: 10px 50px 10px 50px;
+}
+
+.left-box {
+	border: 1px solid blue;
+	width: 100%;
+}
+
+#form1, #form2 {
+	padding-top: 3%;
+}
+
+.srh-txt {
+	 padding-top: 15px;
+	 margin: 0px;
+}
+
+.fq-items:hover, .food-items:hover {
+	opacity: 0.7;
+	transition: 0.3s;
+}
+#wikipedia-links {
+	margin: 0px;
+	padding: 5px;
+	display: none;
+}
+
+.middlr {
+	display: block;
+	margin: auto;
+}
+
+.rotate {
+	-webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+	-moz-transform: rotate(180deg);        /* FF */
+	-o-transform: rotate(180deg);          /* Opera */
+	-ms-transform: rotate(180deg);         /* IE9 */
+	transform: rotate(180deg);
+}
+
+#wikipedia-links li {
+	background-color: #bfbfbf;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 95%;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    text-align: center;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+#wikipedia-links li:hover {
+	opacity: 0.7;
+	transition: 0.3s;
+}
+
+.right-box {
+	border: 1px solid blue;
+}
+
+.main-box {
+	
+}
+
+.map-div {
+	width: 100%;
+	height: 76vh;
+}
+#street-view {
+	width: 100%;
+	margin: auto;
+}
+.street-img {
+	width: 100%;
+	max-height: 600px;
+}
+
+.nytimes-container {
+	padding: 0 10px 0 10px;
+	
+}
+
+#nytimes-header {
+	height: 48%;
+}
+
+.news-div {
+	
+}
+
+.news-list {
+	
+}
+
+#cart {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 50px;
+	width: 50px;
+	padding: 5px;
+	z-index: 1000;
+	border: 2px solid blue;
+	-webkit-transition: transition 0.3s;
+	transition: 0.3s;
+	display: none;
+}
+
+#cart:hover {
+	background-color: lightgrey;
+	transition: 0.3s;
+}
+
+.article-list {
+    margin: 0;
+    padding: 0;	
+	white-space: wrap;
+}
+
+#ipt-1 {
+	width: 95%;
+	margin-bottom: 5px;
+}
+
+.selected-foods {
+	max-height: 65vh;
+	overflow-y: scroll;
+	padding: 0px;
+	margin: 0px;
+}
+#food-list {
+	margin-bottom: 10px;
+}
+
+.article {
+    list-style-type: none;
+    padding:10px;
+    border-top: 1px solid #CCC;
+}
+.article:first-child {
+    border-top:none;
+}
+
+.text-shadow {
+	text-shadow: 2px 2px 5px gray;
+}
+.border {
+	border: 1px solid blue;
+	padding: 10px;
+}
+
+.food-text {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0px;
+}
+
+.food-items {
+	background-color: gray;
+	margin-bottom: 5px;
+	padding: 5px;
+	width: 90%;
+	display: block;
+	margin: auto;
+	margin-bottom: 5px;
+	text-align: center;
+	-webkit-transition: transition 0.3s;
+	transition: 0.3s;
+}
+.food-items:hover {
+
+}
+#selected-foods, #food-list {
+	margin: 0px;
+	padding: 0px;
+}

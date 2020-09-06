@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen">
+    <link rel="stylesheet" href="{{ '/assets/css/mobile.css' | relative_url }}" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="{{ '/assets/css/non-screen.css' | relative_url }}" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="{{ '/assets/js/modernizr.js' | relative_url }}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="{{ '/assets/js/headsmart.min.js' | relative_url }}"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+{% seo %}
+  </head>
+
+  <body>
+   
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+          
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+            <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+  
+      </header>
+
+      {% if site.show_downloads %}
+        <section id="downloads">
+          <span class="inner">
+            <a href="{{ site.github.zip_url }}" class="zip"><em>download</em> .ZIP</a><a href="{{ site.github.tar_url }}" class="tgz"><em>download</em> .TGZ</a>
+          </span>
+        </section>
+      {% else %}
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      {% endif %}
+    
+
+      <span class="banner-fix"></span>
+ <section id="main_content">
+<body>
+    
+      <h1>COVID-19</h1>
+      <h2>
+        Important COVID-19 Information Below
+      </h2>
+    
+
+    <main>
+      <main>
+        
+          <form>
+        <p> Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered virus. </p>
+      
+        <button type="About COVID-19" id="About COVID-19">
+          <a href="About.html">About COVID-19</a>
+        </button>
+            <p></p>
+        <button type="Symptoms and Treatment" id="Symptoms and Treatment">
+          <a href="Symptoms.html">Symptoms and Treatment</a>
+        </button>
+            <p></p>
+         <button type="Prevention and Risks" id="Prevention and Risks">
+          <a href="Prevention.html">Prevention and Risks</a>
+        </button>
+       <p></p>
+          <button type="Travel Restrictions" id="Travel Restrictions">
+          <a href="Travel.html">Travel Restrictions</a>
+        </button>
+        <p></p>
+        
+
+        <button type="Back" id="Back">
+          <a href="login.html">Back</a>
+        </button>
+      </form>
+      <section class="dreams">
+        <ul id="dreams"></ul>
+      </section>
+      </main>
+    </main>
+  </body>
+  </section>
+   <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            {% if site.github.is_project_page %}
+              <p>This project by Alpha Team can be found on <a href="{{ site.github.repository_url }}">GitHub</a></p>
+            {% endif %}
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        
+      </footer>
+     
+    
+    </div>
+
+    {% if site.google_analytics %}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ site.google_analytics }}', 'auto');
+        ga('send', 'pageview');
+      </script>
+    {% endif %}
+  </body>
+  <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "wP762pt1lN");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
+
+</html>
