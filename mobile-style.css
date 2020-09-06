@@ -1,0 +1,42 @@
+/* New Mobile Style */
+
+@media only screen and (max-width: 992px) {
+	
+	/*#selected-foods {
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		margin: auto;
+	}
+	#cart {
+		display: block;
+	}*/
+	
+}
+
+@media only screen and (max-width: 485px) {
+	
+	.header-text {
+		margin: 0px;
+		font-size: 18px;
+		padding: 15px;
+		-webkit-transition: transition: 0.4s;
+		transition: 0.4s;
+	}
+	#cart {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		height: 30px;
+		width: 30px;
+		padding: 2px;
+		z-index: 1000;
+		border: 2px solid black;
+		-webkit-transition: transition 0.3s;
+		transition: 0.3s;
+	}
+	
+	
+}
